@@ -15,6 +15,10 @@ class CreateBudgetImagesTable extends Migration
     {
         Schema::create('budget_images', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('budget_id')->constrained('budgets');
+            $table->tinyInteger('status');
+            $table->integer('position')->nullable();
+            $table->string('description', 45)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
