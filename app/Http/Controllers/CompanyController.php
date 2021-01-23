@@ -32,6 +32,21 @@ class CompanyController extends Controller
     }
 
     /**
+     * Show an company.
+     *
+     * Retrieve and show an specific company.
+     *
+     * @param int $id
+     * @return json
+     **/
+    public function show(int $id)
+    {
+        $company = $this->company->find($id);
+
+        return response()->json($company);
+    }
+
+    /**
      * Store company.
      *
      * Store data of the company.
