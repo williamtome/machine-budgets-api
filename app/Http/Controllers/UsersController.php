@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class UsersController extends Controller
 {
+    /**
+     * @var User
+     */
+    private $user;
+
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return new Response(['message' => __METHOD__]);
+        return new Response($this->user->all());
     }
 
     /**
