@@ -62,4 +62,24 @@ class CompanyController extends Controller
         return response()->json($company);
     }
 
+    /**
+     * Update company.
+     *
+     * Update data of the company.
+     *
+     * @param Request $request Request data of the company
+     * @param int $id company id
+     * @return json
+     * @throws conditon
+     **/
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+
+        $company = $this->company->find($id);
+        $company->update($data);
+
+        return response()->json($company);
+    }
+
 }
