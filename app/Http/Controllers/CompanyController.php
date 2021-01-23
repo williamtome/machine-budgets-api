@@ -82,4 +82,21 @@ class CompanyController extends Controller
         return response()->json($company);
     }
 
+    /**
+     * Delete an company.
+     *
+     * Delete an specific company.
+     *
+     * @param int $id
+     * @return json $company
+     **/
+    public function delete(int $id)
+    {
+        $company = $this->company->find($id);
+        $company->status = 0;
+        $company->delete();
+
+        return response()->json($company);
+    }
+
 }
