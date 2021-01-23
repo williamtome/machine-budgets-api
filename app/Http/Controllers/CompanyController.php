@@ -29,7 +29,7 @@ class CompanyController extends Controller
     {
         $companies = $this->company->all();
 
-        return response()->json($companies);
+        return new CompanyResource($companies);
     }
 
     /**
@@ -44,7 +44,6 @@ class CompanyController extends Controller
     {
         $company = $this->company->find($id);
 
-        // return response()->json($company);
         return new CompanyResource($company);
     }
 
@@ -61,7 +60,7 @@ class CompanyController extends Controller
     {
         $data = $request->all();
         $company = $this->company->create($data);
-        return response()->json($company);
+        return new CompanyResource($company);
     }
 
     /**
@@ -81,7 +80,7 @@ class CompanyController extends Controller
         $company = $this->company->find($id);
         $company->update($data);
 
-        return response()->json($company);
+        return new CompanyResource($company);
     }
 
     /**
@@ -98,7 +97,7 @@ class CompanyController extends Controller
         $company->status = 0;
         $company->delete();
 
-        return response()->json($company);
+        return new CompanyResource($company);
     }
 
 }
