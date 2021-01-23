@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CompanyResource;
 use App\Models\Company;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,8 @@ class CompanyController extends Controller
     {
         $company = $this->company->find($id);
 
-        return response()->json($company);
+        // return response()->json($company);
+        return new CompanyResource($company);
     }
 
     /**
