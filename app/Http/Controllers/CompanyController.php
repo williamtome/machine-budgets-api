@@ -42,7 +42,9 @@ class CompanyController extends Controller
      **/
     public function store(Request $request)
     {
-        dd($request->all());
+        $data = $request->all();
+        $company = $this->company->create($data);
+        return response()->json($company);
     }
 
 }
