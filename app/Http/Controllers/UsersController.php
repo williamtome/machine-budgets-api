@@ -22,9 +22,16 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new Response($this->user->all());
+        $users = $this->user;
+
+        if ($request->has('fields')) {
+            $fields = $request->fields;
+            $users = $users->selectRaw($fields);
+        }
+
+        return new Response($users->paginate(5));
     }
 
     /**
