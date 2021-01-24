@@ -20,7 +20,7 @@ Route::resource('/users', UsersController::class);
 
 Route::group(['prefix' => 'companies'], function () {
     Route::get('/', [CompanyController::class, 'index']);
-    Route::post('/', [CompanyController::class, 'store']);
+    Route::post('/', [CompanyController::class, 'store'])->middleware('auth.basic');
     Route::get('/{id}', [CompanyController::class, 'show']);
     Route::put('/{id}', [CompanyController::class, 'update']);
     Route::delete('/{id}', [CompanyController::class, 'delete']);
