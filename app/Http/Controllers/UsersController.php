@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Repository\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -25,13 +26,17 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         $users = $this->user;
+        $userRepository = new UserRepository($users, $request);
 
-        if ($request->has('fields')) {
-            $fields = $request->fields;
-            $users = $users->selectRaw($fields);
+        if ($request->has('conditions')) {
+            $userRepository->selectConditions($request->conditions);
         }
 
-        return new Response($users->paginate(5));
+        if ($request->has('fields')) {
+            $userRepository->selectFilter($request->fields);
+        }
+
+        return new Response($userRepository->getResult()->paginate(5));
     }
 
     /**
