@@ -1,4 +1,4 @@
-# Machine Budgets
+# Machine Budgets API
 
 This project have the finality to do budgets of the use machine.
 ### Techs:
