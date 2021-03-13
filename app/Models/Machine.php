@@ -16,4 +16,8 @@ class Machine extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    protected $fillable = [
+        "name", "value_throttle", "value_working", 'image', 'status'
+    ];
 }
