@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MachineController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Http\Request;
@@ -25,3 +26,5 @@ Route::group(['prefix' => 'companies'], function () {
     Route::put('/{id}', [CompanyController::class, 'update']);
     Route::delete('/{id}', [CompanyController::class, 'delete']);
 });
+
+Route::resource('machine', MachineController::class);
